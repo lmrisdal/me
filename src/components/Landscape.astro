@@ -1,0 +1,36 @@
+---
+const towers = [
+  {x:14,w:34,h:80},{x:53,w:23,h:128},{x:81,w:39,h:98},
+  {x:126,w:44,h:177},{x:177,w:25,h:116},{x:208,w:48,h:220},
+  {x:262,w:29,h:144},{x:297,w:45,h:108},{x:349,w:34,h:167},
+  {x:390,w:27,h:118},{x:423,w:42,h:88},
+];
+---
+<svg class="landscape" viewBox="0 0 480 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="city-haze" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#07141e"/><stop offset="1" stop-color="#102b35"/></linearGradient>
+    <linearGradient id="city-fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#34ecde" stop-opacity=".2"/><stop offset="1" stop-color="#34ecde" stop-opacity="0"/></linearGradient>
+    <pattern id="city-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" stroke="#54dddc" stroke-opacity=".07"/></pattern>
+  </defs>
+  <path d="M0 0h480v340H0z" fill="url(#city-haze)"/>
+  <path d="M0 0h480v340H0z" fill="url(#city-grid)"/>
+  <circle cx="318" cy="99" r="66" stroke="#34ecde" stroke-opacity=".2"/>
+  <circle cx="318" cy="99" r="53" fill="#34ecde" fill-opacity=".07" stroke="#34ecde" stroke-opacity=".4"/>
+  <path d="M252 99h132M318 33v132" stroke="#34ecde" stroke-opacity=".15"/>
+  <g fill="#183440"><path d="M0 150h25v110H0zM30 121h40v139H30zM74 159h44v101H74zM111 84h34v176h-34zM150 133h43v127h-43zM198 103h31v157h-31zM273 74h30v186h-30zM310 123h39v137h-39zM359 92h39v168h-39zM405 143h40v117h-40zM450 122h30v138h-30z"/></g>
+  {towers.map(({x,w,h},i) => <g shape-rendering="crispEdges">
+    <path d={`M${x} 260v-${h}h${w}v${h}z`} fill={i%2 ? '#0b1b26' : '#0d202a'} stroke="#34505d" stroke-width=".7"/>
+    <path d={`M${x} ${260-h}h${w}`} stroke={i%3===0 ? '#37dfd3' : '#45616a'}/>
+    {Array.from({length:Math.floor((h-14)/13)},(_,row)=>Array.from({length:Math.floor((w-8)/9)},(_,col)=><rect x={x+5+col*9} y={270-h+row*13} width="3" height="5" fill={(row+col+i)%4===0 ? '#37dfd3' : '#274451'} opacity={(row+col)%3===0 ? '.9' : '.5'}/>))}
+  </g>)}
+  <path d="M230 40V13M224 30h12M148 83V59M144 72h8M366 93V73" stroke="#55d7d7"/>
+  <rect class="city-beacon" x="228" y="11" width="4" height="4" fill="#a4fff2"/>
+  <path d="M215 63h7v68h-7z" fill="#2cf0dc" fill-opacity=".8"/>
+  <path d="M222 153h27v2h-27M222 159h19v2h-19M131 110h34v3h-34" fill="#3ce4d5"/>
+  <path d="M0 263h480v77H0z" fill="#08131b"/>
+  <path d="M0 263h480M0 280h480M0 303h480M0 337h480M240 263L25 340M240 263l-105 77M240 263v77M240 263l105 77M240 263l215 77" stroke="#2a716f" stroke-opacity=".45" stroke-width=".7"/>
+  <path d="M208 266h48l25 74H180z" fill="url(#city-fade)"/>
+  <path d="M0 261h480" stroke="#37dfd3" stroke-opacity=".75"/>
+  <g stroke="#37dfd3" stroke-width="2"><path d="M1 18V1h17M462 1h17v17M1 322v17h17M462 339h17v-17"/></g>
+  <g fill="#7ba5b1"><rect x="20" y="22" width="3" height="3"/><rect x="27" y="22" width="3" height="3"/><rect x="34" y="22" width="3" height="3"/></g>
+</svg>
