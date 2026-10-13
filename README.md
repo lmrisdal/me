@@ -27,13 +27,20 @@ Work experience is based on the supplied LinkedIn details. Project descriptions 
 
 ## GitHub Pages
 
-The site is configured at the root, **https://lmrisdal.github.io/**. GitHub Pages serves this root URL from a repository named `lmrisdal.github.io`. To deploy from the `me` repository at a domain root instead, configure a custom domain.
+The site is configured for **https://risdal.me/** at the domain root.
 
-1. In the GitHub repository, open **Settings → Pages** and select **GitHub Actions** as the source.
-2. Push this project to `main` (or run the deployment workflow manually once it is on GitHub).
-3. The workflow installs locked dependencies, checks types, builds, and deploys `dist/`.
+GitHub Pages uses the GitHub Actions workflow in `.github/workflows/deploy.yml`. Pushes to `main` install locked dependencies, check types, build, and deploy `dist/`.
 
-For a custom domain, update `site` in `astro.config.mjs`, set `base` to `/`, add `public/CNAME`, and configure the domain in GitHub Pages and your DNS provider. For a `lmrisdal.github.io` repository, use `base: '/'`.
+In GitHub Pages settings, set the custom domain to `risdal.me`. Custom Actions deployments use the Pages setting, not a CNAME file.
+
+At Cloudflare, add these DNS-only A records for `@`:
+
+- `185.199.108.153`
+- `185.199.109.153`
+- `185.199.110.153`
+- `185.199.111.153`
+
+Optionally add a DNS-only CNAME for `www` pointing to `lmrisdal.github.io`. Enable Enforce HTTPS in GitHub Pages once GitHub provisions the certificate.
 
 ## Design and accessibility
 

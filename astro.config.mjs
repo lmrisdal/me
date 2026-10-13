@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 export default defineConfig({
-  site: "https://lmrisdal.github.io",
+  site: "https://risdal.me",
   base: "/",
   output: "static",
   devToolbar: { enabled: false },
